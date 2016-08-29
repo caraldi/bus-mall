@@ -19,11 +19,11 @@ As marketing professionals, we are seeking information gleaned from the feedback
 As developers, we want to build an app that displays appealing visuals of potential products to individuals in focus groups who are to provide feedback for marketing research
 
  + The presentation will feature three items at a time, side-by-side-by-side, from which the participants can choose which potential product they would be most likely to purchase
-  + Functional considerations:
-   + The resulting data must be stored, calculated, and visually displayed for analysis by the marketing research team
-   + To keep the product selection process as untainted as possible, no results may be shown to users until there have been a total of 25 selections made
-   + Because the marketing team is not only interested in the total number of clicks, but also the percentage of times that an item was clicked when it was shown, how many times each image is displayed must be tracked and calculated; this will ultimately be displayed in a graph to inform marketing decisions before the manufacturing process begins
-   + The look and feel of the app is important; it must not only be functional for use by the marketing team, but also designed with custom font, color palette, layout with semantic HTML, etc. to further the appeal of the BusMall brand
+ + Functional considerations:
+     + The resulting data must be stored, calculated, and visually displayed for analysis by the marketing research team
+     + To keep the product selection process as untainted as possible, no results may be shown to users until there have been a total of 25 selections made
+     + Because the marketing team is not only interested in the total number of clicks, but also the percentage of times that an item was clicked when it was shown, how many times each image is displayed must be tracked and calculated; this will ultimately be displayed in a graph to inform marketing decisions before the manufacturing process begins
+     + The look and feel of the app is important; it must not only be functional for use by the marketing team, but also designed with custom font, color palette, layout with semantic HTML, etc. to further the appeal of the BusMall brand
 
 ##Focus Group Participants##
 
