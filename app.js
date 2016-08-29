@@ -43,7 +43,7 @@ function drawImage() {
     var randomPath = imagePaths[randomIndex];
 
 // Set src
-    img.setAttribute('src', 'imgs/' + randomPath);
+    img.setAttribute('src', 'img/' + randomPath);
 
 // Add to DOM
     li.appendChild(img);

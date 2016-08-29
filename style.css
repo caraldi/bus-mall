@@ -1,0 +1,9 @@
+body {
+  margin: 0 auto;
+  background-color: #00a0b0;
+}
+
+#images {
+  position: relative;
+  display: inline-block;
+}
