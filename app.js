@@ -9,31 +9,34 @@ for (var i = 0; i < imagePaths.length; i++) {
   var name = imagePaths[i];
   new Image(null, name);
 }
-console.log(imagePaths, images);
 
-// Create elements
+// Create image li elements
 var imageList = document.getElementById('images');
 
+// Add event listener clickHandler for event 'click'
 imageList.addEventListener('click', clickHandler);
 
+// Use drawImage function to render an imageList (pass argument of currentImageIndices to ensure three different images are presented)
 drawImage(0);
 drawImage(1);
 drawImage(2);
 
 // Create clickHandler function for event 'click' which calls on drawImage function
-function clickHandler(e) {
-  console.log('Target clicked:', event.target);
+
+function clickHandler(event) {
+  console.log('Event target:', event.target);
   var matchPath = event.target.getAttribute('src');
-  var arrayOfRandomIndices = randomIndices();
   console.log('Match path:', matchPath);
+  var arrayOfRandomIndices = randomIndices();
+  console.log('Array of random indices:', arrayOfRandomIndices);
 
   for(var j = 0; j < currentImageIndices.length; j++) {
     var currentIndex = currentImageIndices[j];
     var displayedObject = images[currentIndex];
     displayedObject.views += 1;
   }
+
 // Use event target to determine which image was clicked (loop through and compare paths of each)
-function findObject() {
   for (var k = 0; k < images.length; k++) {
     var currentImageObject = images[k];
     console.log('Images:', k, currentImageObject);
@@ -42,24 +45,25 @@ function findObject() {
       currentImageObject.clicks += 1
     }
   }
-}
-currentImageIndices = arrayOfRandomIndices;
-
+  currentImageIndices = arrayOfRandomIndices;
 // Reset imageList;
-  imageList.textContent = '';
-  drawImage(arrayOfRandomIndices[0]);
-  drawImage(arrayOfRandomIndices[1]);
-  drawImage(arrayOfRandomIndices[2]);
+    imageList.textContent = '';
+    drawImage(arrayOfRandomIndices[0]);
+    drawImage(arrayOfRandomIndices[1]);
+    drawImage(arrayOfRandomIndices[2]);
 }
 
 function randomIndices() {
   var firstRandomIndex = Math.floor(Math.random() * images.length);
   var secondRandomIndex = Math.floor(Math.random() * images.length);
+
   while (firstRandomIndex === secondRandomIndex) {
     secondRandomIndex = Math.floor(Math.random() * images.length);
   }
+
   var thirdRandomIndex = Math.floor(Math.random() * images.length);
-  while (thirdRandomIndex === firstRandomIndex || secondRandomIndex) {
+
+  while (thirdRandomIndex === firstRandomIndex || thirdRandomIndex === secondRandomIndex) {
     thirdRandomIndex = Math.floor(Math.random() * images.length);
   }
   return [firstRandomIndex, secondRandomIndex, thirdRandomIndex];
@@ -74,7 +78,7 @@ function drawImage(index) {
     var randomPath = images[index].path;
 
 // Set src
-    img.setAttribute('src', 'imgs/' + randomPath);
+    img.setAttribute('src', randomPath);
 
 // Add to DOM
     li.appendChild(img);
@@ -85,7 +89,7 @@ function Image(name, path) {
   this.views = 0;
   this.clicks = 0;
   this.name = name;
-  this.path = path;
+  this.path = 'imgs/' + path;
 
   images.push(this);
 }
