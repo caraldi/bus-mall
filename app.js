@@ -102,9 +102,11 @@ new Chart(ctx, {
   type: 'bar',
   data: {
     labels: [images[0].path, images[1].path, images[2].path],
-    datasets: [{
+    datasets: [
+      {
       data: [images[0].clicks, images[1].clicks, images[2].clicks]
-    }]
+    }
+    ]
   },
   options: {
     scales: {
