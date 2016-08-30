@@ -53,6 +53,7 @@ function clickHandler(event) {
     drawImage(arrayOfRandomIndices[2]);
 }
 
+// Create function to randomize image list by accessing three random indices of images array (if equal, generates new random number)
 function randomIndices() {
   var firstRandomIndex = Math.floor(Math.random() * images.length);
   var secondRandomIndex = Math.floor(Math.random() * images.length);
@@ -69,6 +70,7 @@ function randomIndices() {
   return [firstRandomIndex, secondRandomIndex, thirdRandomIndex];
 }
 
+// Create function to draw images based on object path
 function drawImage(index) {
 // Use the image path for the src
 // (image.path)
