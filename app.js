@@ -2,6 +2,7 @@
 
 var imagePaths = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
 var images = [];
+var currentImageIndices = [0, 1, 2];
 
 // Looping through imagePaths array to create new Image object for each, which pushes to images array
 for (var i = 0; i < imagePaths.length; i++) {
@@ -15,52 +16,62 @@ var imageList = document.getElementById('images');
 
 imageList.addEventListener('click', clickHandler);
 
-drawImage();
-drawImage();
-drawImage();
+drawImage(0);
+drawImage(1);
+drawImage(2);
 
 // Create clickHandler function for event 'click' which calls on drawImage function
 function clickHandler(e) {
-  console.log('Target clicked:', e.target);
+  console.log('Target clicked:', event.target);
+  var matchPath = event.target.getAttribute('src');
+  var arrayOfRandomIndices = randomIndices();
+  console.log('Match path:', matchPath);
 
+  for(var j = 0; j < currentImageIndices.length; j++) {
+    var currentIndex = currentImageIndices[j];
+    var displayedObject = images[currentIndex];
+    displayedObject.views += 1;
+  }
 // Use event target to determine which image was clicked (loop through and compare paths of each)
 function findObject() {
-  for (var j = 0; j < images.length; j++) {
-    var match = 'bag.jpg';
-    if (match === images[j].path) {
-      images[j].clicks += 1
-  } else {
-    console.log('No match');
+  for (var k = 0; k < images.length; k++) {
+    var currentImageObject = images[k];
+    console.log('Images:', k, currentImageObject);
+    if (currentImageObject.path === matchPath) {
+      console.log('Found it!', currentImageObject);
+      currentImageObject.clicks += 1
     }
   }
 }
-findObject();
-
-console.log('Images array:', images);
-
-// Add to the views of all images displayed
-
-
-// Add to clicks of just the clicked image
-
+currentImageIndices = arrayOfRandomIndices;
 
 // Reset imageList;
   imageList.textContent = '';
-  drawImage();
-  drawImage();
-  drawImage();
+  drawImage(arrayOfRandomIndices[0]);
+  drawImage(arrayOfRandomIndices[1]);
+  drawImage(arrayOfRandomIndices[2]);
 }
 
-// Needs to eventually draw out all three
-function drawImage() {
+function randomIndices() {
+  var firstRandomIndex = Math.floor(Math.random() * images.length);
+  var secondRandomIndex = Math.floor(Math.random() * images.length);
+  while (firstRandomIndex === secondRandomIndex) {
+    secondRandomIndex = Math.floor(Math.random() * images.length);
+  }
+  var thirdRandomIndex = Math.floor(Math.random() * images.length);
+  while (thirdRandomIndex === firstRandomIndex || secondRandomIndex) {
+    thirdRandomIndex = Math.floor(Math.random() * images.length);
+  }
+  return [firstRandomIndex, secondRandomIndex, thirdRandomIndex];
+}
+
+function drawImage(index) {
 // Use the image path for the src
 // (image.path)
     var img = document.createElement('img');
     var li = document.createElement('li');
     var imageList = document.getElementById('images');
-    var randomIndex = Math.floor(Math.random() * images.length);
-    var randomPath = images[randomIndex].path;
-    console.log('Random path:', randomPath);
+    var randomPath = images[index].path;
 
 // Set src
     img.setAttribute('src', 'imgs/' + randomPath);
