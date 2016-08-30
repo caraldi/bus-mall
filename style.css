@@ -1,7 +1,7 @@
 body {
   margin: 0 auto;
   background-color: #00a0b0;
-  width: 900px;
+  width: 100%;
 }
 
 header {
@@ -25,16 +25,16 @@ h2 {
   margin-top: 0;
 }
 
-.content {
-  position: relative;
-  display: inline-block;
-}
-
-#images {
-  position: relative;
-  display: inline-block;
-}
-
 ul {
   list-style-type: none;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+li {
+  position: relative;
+  display: inline-block;
+  margin-right: 50px;
+  border: 2px solid #edc951;
 }
