@@ -95,3 +95,24 @@ function Image(name, path) {
 
   images.push(this);
 }
+
+// Create chart using charjs library
+var ctx = document.getElementById('chart_canvas');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: [images[0].path, images[1].path, images[2].path],
+    datasets: [{
+      data: [images[0].clicks, images[1].clicks, images[2].clicks]
+    }]
+  },
+  options: {
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
