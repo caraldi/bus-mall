@@ -26,17 +26,17 @@ function clickHandler(e) {
 // Use event target to determine which image was clicked (loop through and compare paths of each)
 function findObject() {
   for (var j = 0; j < images.length; j++) {
-    var match = 'sweep.png';
+    var match = 'bag.jpg';
     if (match === images[j].path) {
-      function addClick() {
-
-      };
+      images[j].clicks += 1
   } else {
     console.log('No match');
     }
   }
 }
 findObject();
+
+console.log('Images array:', images);
 
 // Add to the views of all images displayed
 

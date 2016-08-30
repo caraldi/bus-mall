@@ -1,20 +1,24 @@
 body {
   margin: 0 auto;
   background-color: #00a0b0;
-  width: 100%;
+  width: 90%;
 }
 
 header {
   position: relative;
   background-color: #eb6841;
   border: 2px solid #edc951;
-  color: #4f372d;
   text-align: center;
+  margin-top: 50px;
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-bottom: 50px;
 }
 
 h1 {
   font-family: 'Lobster', cursive;
   font-size: 60px;
+  color: #edc951;
   margin-top: 10px;
   margin-bottom: 0px;
 }
@@ -22,13 +26,18 @@ h1 {
 h2 {
   font-family: 'Raleway', sans-serif;
   font-size: 20px;
+  color: #ffffff;
   margin-top: 0;
 }
 
 ul {
   list-style-type: none;
+  background-color: #eb6841;
+  border: 2px solid #edc951;
   margin-top: 50px;
+  padding-top: 50px;
   margin-bottom: 50px;
+  padding-bottom: 50px;
   text-align: center;
 }
 
@@ -36,5 +45,5 @@ li {
   position: relative;
   display: inline-block;
   margin-right: 50px;
-  border: 2px solid #edc951;
+  border: 2px solid #00a0b0;
 }
