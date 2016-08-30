@@ -58,15 +58,18 @@ function randomIndices() {
   var firstRandomIndex = Math.floor(Math.random() * images.length);
   var secondRandomIndex = Math.floor(Math.random() * images.length);
 
+// Create while loop to check first and secondRandomIndex against one another (if equal, generates new random number)
   while (firstRandomIndex === secondRandomIndex) {
     secondRandomIndex = Math.floor(Math.random() * images.length);
   }
-
   var thirdRandomIndex = Math.floor(Math.random() * images.length);
 
+// Create second while loop to check third against first and secondRandomIndex
   while (thirdRandomIndex === firstRandomIndex || thirdRandomIndex === secondRandomIndex) {
     thirdRandomIndex = Math.floor(Math.random() * images.length);
   }
+
+// Check random indices against currentImageIndices (ensures no repeated list presentation from one immediately preceeding, firstRandomIndex now has to be checked initially)
   return [firstRandomIndex, secondRandomIndex, thirdRandomIndex];
 }
 
