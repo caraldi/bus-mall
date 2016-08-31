@@ -103,17 +103,25 @@ function randomIndices() {
   return [firstRandomIndex, secondRandomIndex, thirdRandomIndex];
 }
 
+// Create two arrays to add image names as labels to chart and tracked clicks as bar data
+var imageNames = [];
+var imageClicks = [];
+
+// Push names and clicks to imageNames and imageClicks arrays
+for (i = 0; i < images.length; i++) {
+  imageNames.push(images[i].name);
+  imageClicks.push(images[i].clicks);
+  }
+
 // Create chart using charjs library
 var ctx = document.getElementById('chart_canvas');
 new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: [images[0].path, images[1].path, images[2].path],
-    datasets: [
-      {
-      data: [images[0].clicks, images[1].clicks, images[2].clicks]
-    }
-    ]
+    labels: imageNames,
+    datasets: [{
+      data: imageClicks
+    }]
   },
   options: {
     scales: {
