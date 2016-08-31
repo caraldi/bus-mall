@@ -1,23 +1,25 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-  <link type="text/css" rel="stylesheet" href="style.css"/>
-<link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
     <title>BusMall Product Selector</title>
   </head>
   <body>
-      <div class="page">
-        <header>
-          <h1>Welcome</h1>
-            <h2>Of the three images shown, please select the product that appeals to you the most:</h2>
-        </header>
-        <div class="content">
-          <ul id="images">
-          </ul>
-        </div>
+    <div class="page">
+    <header>
+      <h1>Welcome</h1>
+        <h2>Please select the product that you would be most likely to purchase</br> by clicking on <b>one</b> of the three images shown:</h2>
+    </header>
+      <ul id="images">
+
+      </ul>
+      <div class="content">
+        <canvas id="chart_canvas" width="300" height="300"></canvas>
       </div>
-    <canvas id="chart_canvas" width="300" height="300"></canvas>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    </div>
   </body>
 </html>
