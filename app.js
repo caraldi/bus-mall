@@ -68,8 +68,6 @@ function randomIndices() {
   while (thirdRandomIndex === firstRandomIndex || thirdRandomIndex === secondRandomIndex) {
     thirdRandomIndex = Math.floor(Math.random() * images.length);
   }
-
-// Check random indices against currentImageIndices (ensures no repeated list presentation from one immediately preceeding, firstRandomIndex now has to be checked initially)
   return [firstRandomIndex, secondRandomIndex, thirdRandomIndex];
 }
 
