@@ -8,24 +8,27 @@ header {
   position: relative;
   background-color: #eb6841;
   border: 2px solid #edc951;
+  border-radius: 25px;
   text-align: center;
   margin-top: 50px;
-  margin-right: 50px;
-  margin-left: 50px;
+  margin-right: 75px;
+  margin-left: 75px;
   margin-bottom: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 h1 {
   font-family: 'Lobster', cursive;
-  font-size: 60px;
+  font-size: 68px;
   color: #edc951;
   margin-top: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 
 h2 {
   font-family: 'Raleway', sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   color: #ffffff;
   margin-top: 0;
 }
@@ -34,6 +37,7 @@ ul {
   list-style-type: none;
   background-color: #eb6841;
   border: 2px solid #edc951;
+  border-radius: 25px;
   margin-top: 50px;
   padding-top: 50px;
   margin-bottom: 50px;
