@@ -5,7 +5,7 @@ var images = [];
 var currentImageIndices = [0, 1, 2];
 var totalClicks = 0;
 
-// Create Image object
+// Create Image objects to be pushed to images array
 function Image(name, path) {
   this.views = 0;
   this.clicks = 0;
@@ -15,30 +15,49 @@ function Image(name, path) {
   images.push(this);
 }
 
-// Looping through imagePaths array to create new Image object for each, which pushes to images array
+// Loop through imagePaths array to create new Image object for each image
 for (var i = 0; i < imagePaths.length; i++) {
-  var name = imagePaths[i];
-  new Image(null, name);
+
+// Use split to remove path for name variable
+  var name = imagePaths[i].split('.')[0];
+  var path = imagePaths[i];
+
+  new Image(name, path);
 }
 
-// Create image li elements
+// Create function to draw images based on object path
+function drawImage(index) {
+
+// Use the image path for the src
+    var img = document.createElement('img');
+    var li = document.createElement('li');
+    var imageList = document.getElementById('images');
+    var randomPath = images[index].path;
+
+// Set src
+
+    img.setAttribute('src', randomPath);
+    
+// Add to DOM
+    li.appendChild(img);
+    imageList.appendChild(li);
+}
+
+// Create ul of images
 var imageList = document.getElementById('images');
 
-// Add event listener clickHandler for event 'click'
+// Add event listener clickHandler for event 'click' on imageList
 imageList.addEventListener('click', clickHandler);
 
-// Use drawImage function to render an imageList (pass argument of currentImageIndices to ensure three different images are presented)
+// Use drawImage function to render an imageList (hard code argument of currentImageIndices to ensure three different images are presented)
 drawImage(0);
 drawImage(1);
 drawImage(2);
 
 // Create clickHandler function for event 'click' which calls on drawImage function
 function clickHandler(event) {
-  console.log('Event target:', event.target);
   var matchPath = event.target.getAttribute('src');
-  console.log('Match path:', matchPath);
   var arrayOfRandomIndices = randomIndices();
-  console.log('Array of random indices:', arrayOfRandomIndices);
 
   for(var j = 0; j < currentImageIndices.length; j++) {
     var currentIndex = currentImageIndices[j];
@@ -51,7 +70,6 @@ function clickHandler(event) {
     var currentImageObject = images[k];
     console.log('Images:', k, currentImageObject);
     if (currentImageObject.path === matchPath) {
-      console.log('Found it!', currentImageObject);
       currentImageObject.clicks += 1
     }
   }
@@ -84,19 +102,4 @@ function randomIndices() {
     thirdRandomIndex = randomIndex();
   }
   return [firstRandomIndex, secondRandomIndex, thirdRandomIndex];
-}
-
-// Create function to draw images based on object path
-function drawImage(index) {
-// Use the image path for the src
-// (image.path)
-    var img = document.createElement('img');
-    var li = document.createElement('li');
-    var imageList = document.getElementById('images');
-    var randomPath = images[index].path;
-// Set src
-    img.setAttribute('src', randomPath);
-// Add to DOM
-    li.appendChild(img);
-    imageList.appendChild(li);
 }
