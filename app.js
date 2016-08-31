@@ -1,5 +1,7 @@
 'use strict';
 
+// Begin code dealing with Image objects display
+
 var imagePaths = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
 var images = [];
 var currentImageIndices = [0, 1, 2];
@@ -73,11 +75,55 @@ function clickHandler(event) {
     }
   }
   currentImageIndices = arrayOfRandomIndices;
+
 // Reset imageList;
     imageList.textContent = '';
     drawImage(arrayOfRandomIndices[0]);
     drawImage(arrayOfRandomIndices[1]);
     drawImage(arrayOfRandomIndices[2]);
+
+// End of code dealing with Image objects display
+
+// Begin code dealing with display of data in chart
+var chartButton = document.getElementById('show_chart');
+chartButton.addEventListener('click', chartClickHandler);
+
+// Create two arrays to add image names as labels to chart and tracked clicks as bar data
+var imageNames = [];
+var imageClicks = [];
+
+// Push names and clicks to imageNames and imageClicks arrays
+    for (i = 0; i < images.length; i++) {
+      imageNames.push(images[i].name);
+      imageClicks.push(images[i].clicks);
+      }
+
+    // Create chartClickHandler function to display imageClicks as votes
+    // Needs to be placed in event handler function
+    function chartClickHandler() {
+
+    }
+
+    // Create chart using charjs library
+    var ctx = document.getElementById('chart_canvas');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: imageNames,
+        datasets: [{
+          data: imageClicks
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
 }
 
 // Create function to create randomized index
@@ -102,34 +148,3 @@ function randomIndices() {
   }
   return [firstRandomIndex, secondRandomIndex, thirdRandomIndex];
 }
-
-// Create two arrays to add image names as labels to chart and tracked clicks as bar data
-var imageNames = [];
-var imageClicks = [];
-
-// Push names and clicks to imageNames and imageClicks arrays
-for (i = 0; i < images.length; i++) {
-  imageNames.push(images[i].name);
-  imageClicks.push(images[i].clicks);
-  }
-
-// Create chart using charjs library
-var ctx = document.getElementById('chart_canvas');
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: imageNames,
-    datasets: [{
-      data: imageClicks
-    }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    }
-  }
-});
