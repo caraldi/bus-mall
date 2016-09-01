@@ -112,16 +112,14 @@ chartButton.addEventListener('click', chartClickHandler);
 var imageNames = [];
 var imageClicks = [];
 
-// Push names and clicks to imageNames and imageClicks arrays
-for (i = 0; i < images.length; i++) {
-  imageNames.push(images[i].name);
-  imageClicks.push(images[i].clicks);
-}
-
 // Create chartClickHandler function to display clicked images data
 // Needs to be placed in event handler function
 function chartClickHandler(event) {
 
+// Push names and clicks to imageNames and imageClicks arrays
+for (i = 0; i < images.length; i++) {
+  imageNames.push(images[i].name);
+  imageClicks.push(images[i].clicks);
 }
 
 // Create chart using charjs library
@@ -131,6 +129,7 @@ new Chart(ctx, {
     data: {
       labels: imageNames,
       datasets: [{
+        label: "Number of votes",
         data: imageClicks
       }]
     },
@@ -144,3 +143,4 @@ new Chart(ctx, {
       }
     }
   });
+}
