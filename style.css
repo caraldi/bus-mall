@@ -72,3 +72,7 @@ button {
   font-size: 25px;
   color: #ffffff;
 }
+
+.hidden {
+  visibility: hidden;
+}

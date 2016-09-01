@@ -52,6 +52,14 @@ drawImage(2);
 
 // Create clickHandler function for event 'click' which calls on drawImage function
 function clickHandler(event) {
+
+// Show chart button only after 25 clicks
+  if (totalClicks >= 25) {
+    var chartButton = document.getElementById('show_chart');
+    show_chart.classList.remove('hidden');
+    return;
+  }
+
   var matchPath = event.target.getAttribute('src');
   var arrayOfRandomIndices = randomIndices();
 
@@ -113,34 +121,35 @@ var imageNames = [];
 var imageClicks = [];
 
 // Create chartClickHandler function to display clicked images data
-// Needs to be placed in event handler function
 function chartClickHandler(event) {
 
-// Push names and clicks to imageNames and imageClicks arrays
-for (i = 0; i < images.length; i++) {
-  imageNames.push(images[i].name);
-  imageClicks.push(images[i].clicks);
-}
+  chartButton.disabled = true;
 
-// Create chart using charjs library
-var ctx = document.getElementById('chart_canvas');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: imageNames,
-      datasets: [{
-        label: "Number of votes",
-        data: imageClicks
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
+// Push names and clicks to imageNames and imageClicks arrays
+  for (i = 0; i < images.length; i++) {
+    imageNames.push(images[i].name);
+    imageClicks.push(images[i].clicks);
+  }
+
+  // Create chart using charjs library
+  var ctx = document.getElementById('chart_canvas');
+  new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: imageNames,
+        datasets: [{
+          label: "Number of votes",
+          data: imageClicks
         }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
-    }
-  });
-}
+    });
+  }
