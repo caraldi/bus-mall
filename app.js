@@ -126,21 +126,21 @@ function chartClickHandler(event) {
 
 // Create chart using charjs library
 var ctx = document.getElementById('chart_canvas');
-  new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: imageNames,
-        datasets: [{
-          data: imageClicks
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: imageNames,
+      datasets: [{
+        data: imageClicks
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
         }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
       }
-    });
+    }
+  });
