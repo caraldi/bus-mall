@@ -65,9 +65,14 @@ button {
   background-color: #eb6841;
   border: 2px solid #edc951;
   border-radius: 25px;
+  margin-bottom: 25px;
   padding: 10px;
   text-align: center;
   font-family: 'Lobster', cursive;
   font-size: 25px;
   color: #ffffff;
+}
+
+.hidden {
+  visibility: hidden;
 }

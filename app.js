@@ -53,6 +53,14 @@ drawImage(2);
 
 // Create clickHandler function for event 'click' which calls on drawImage function
 function clickHandler(event) {
+
+// Show chart button only after 25 clicks
+  if (totalClicks >= 25) {
+    var chartButton = document.getElementById('show_chart');
+    show_chart.classList.remove('hidden');
+    return;
+  }
+
   var matchPath = event.target.getAttribute('src');
   var arrayOfRandomIndices = randomIndices();
 
@@ -61,6 +69,8 @@ function clickHandler(event) {
     var displayedObject = images[currentIndex];
     displayedObject.views += 1;
   }
+
+  totalClicks += 1;
 
 // Use event target to determine which image was clicked (loop through and compare paths of each)
   for (var k = 0; k < images.length; k++) {
@@ -109,39 +119,43 @@ function randomIndices() {
 var chartButton = document.getElementById('show_chart');
 chartButton.addEventListener('click', chartClickHandler);
 
+// Create chartClickHandler function to display clicked images data
+function chartClickHandler(event) {
+  drawChart();
+  chartButton.disabled = true;
+};
+
+function drawChart() {
 // Create two arrays to add image names as labels to chart and tracked clicks as bar data
-var imageNames = [];
-var imageClicks = [];
+  var imageNames = [];
+  var imageClicks = [];
 
 // Push names and clicks to imageNames and imageClicks arrays
-for (i = 0; i < images.length; i++) {
-  imageNames.push(images[i].name);
-  imageClicks.push(images[i].clicks);
-}
-
-// Create chartClickHandler function to display clicked images data
-// Needs to be placed in event handler function
-function chartClickHandler(event) {
-
-}
+  for (i = 0; i < images.length; i++) {
+    imageNames.push(images[i].name);
+    imageClicks.push(images[i].clicks);
+  }
 
 // Create chart using charjs library
-var ctx = document.getElementById('chart_canvas');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: imageNames,
-      datasets: [{
-        data: imageClicks
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
+  var ctx = document.getElementById('chart_canvas');
+
+  new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: imageNames,
+        datasets: [{
+          label: "Number of votes",
+          data: imageClicks
         }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
-    }
-  });
+    });
+  }
