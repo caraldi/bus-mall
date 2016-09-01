@@ -69,6 +69,8 @@ function clickHandler(event) {
     displayedObject.views += 1;
   }
 
+  totalClicks += 1;
+
 // Use event target to determine which image was clicked (loop through and compare paths of each)
   for (var k = 0; k < images.length; k++) {
     var currentImageObject = images[k];
@@ -116,14 +118,16 @@ function randomIndices() {
 var chartButton = document.getElementById('show_chart');
 chartButton.addEventListener('click', chartClickHandler);
 
-// Create two arrays to add image names as labels to chart and tracked clicks as bar data
-var imageNames = [];
-var imageClicks = [];
-
 // Create chartClickHandler function to display clicked images data
 function chartClickHandler(event) {
-
+  drawChart();
   chartButton.disabled = true;
+};
+
+function drawChart() {
+// Create two arrays to add image names as labels to chart and tracked clicks as bar data
+  var imageNames = [];
+  var imageClicks = [];
 
 // Push names and clicks to imageNames and imageClicks arrays
   for (i = 0; i < images.length; i++) {
@@ -131,8 +135,9 @@ function chartClickHandler(event) {
     imageClicks.push(images[i].clicks);
   }
 
-  // Create chart using charjs library
+// Create chart using charjs library
   var ctx = document.getElementById('chart_canvas');
+
   new Chart(ctx, {
       type: 'bar',
       data: {
