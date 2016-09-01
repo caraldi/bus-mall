@@ -145,16 +145,3 @@ new Chart(ctx, {
       }
     }
   });
-
-// Create local storage for Image objects
-JSON.stringify(images);
-
-var jsonString = 'images';
-
-localStorage.setItem('images', 'jsonString');
-
-localStorage.storedArray;
-
-localStorage.getItem('jsonString');
-
-JSON.parse(images);
