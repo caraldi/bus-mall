@@ -3,7 +3,7 @@
 
 // Begin code dealing with Image objects display
 var imagePaths = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg', 'wine-glass.jpg'];
-var images = [];
+var images = JSON.parse(localStorage.getItem('storedData'));
 var currentImageIndices = [0, 1, 2];
 var totalClicks = 0;
 
@@ -17,12 +17,16 @@ function Image(name, path) {
   images.push(this);
 }
 
-// Loop through imagePaths array to create new Image object for each image
-for (var i = 0; i < imagePaths.length; i++) {
-  var name = imagePaths[i].split('.')[0];
-  var path = imagePaths[i];
+if (!images) {
+  images = [];
 
-  new Image(name, path);
+  // Loop through imagePaths array to create new Image object for each image
+  for (var i = 0; i < imagePaths.length; i++) {
+    var name = imagePaths[i].split('.')[0];
+    var path = imagePaths[i];
+
+    new Image(name, path);
+  }
 }
 
 // Create function to draw images based on object path
@@ -121,6 +125,10 @@ chartButton.addEventListener('click', chartClickHandler);
 
 // Create chartClickHandler function to display clicked images data
 function chartClickHandler(event) {
+// Stringify Images array using JSON, store in local storage
+  var storedImages = JSON.stringify(images);
+  localStorage.setItem('storedData',storedImages);
+
   drawChart();
   chartButton.disabled = true;
 };
