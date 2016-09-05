@@ -20,7 +20,7 @@ function Image(name, path) {
 if (!images) {
   images = [];
 
-  // Loop through imagePaths array to create new Image object for each image
+// Loop through imagePaths array to create new Image object for each image
   for (var i = 0; i < imagePaths.length; i++) {
     var name = imagePaths[i].split('.')[0];
     var path = imagePaths[i];
